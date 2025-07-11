@@ -3,7 +3,7 @@ import { generateToken } from "../lib/utils.js";
 import UserModel from "../models/User";
 import bcrypt from "bcrypt";
 
-//signup
+//signup a new user
 export const signup = async(req,res)=>{
     const {fullName,email,password,bio} = req.body;
 
@@ -83,7 +83,7 @@ export const checkAuth = (req,res)=>{
     res.json({success:true,user:req.user})
 }
 
-//controller to update user profile details
+//controller to update user profile details 
 export const updateProfile = async (req,res)=>{
     try {
         const {profilePic,bio,fullName} = req.body
