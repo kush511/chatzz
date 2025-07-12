@@ -49,7 +49,7 @@ export const getMessages =async (req,res)=>{
         res.json({success:true,messages})
 
     } catch (error) {
-         console.log(error.messages);
+         console.log(error.message);
             res.json({success:false,message:error.message})
     }
 }
