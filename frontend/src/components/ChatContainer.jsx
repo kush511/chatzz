@@ -60,7 +60,7 @@ const ChatContainer = () => {
             <img className='w-8 rounded-full' src={selectedUser.profilePic || assets.avatar_icon} alt="" />
         <p className='flex-1 text-lg text-white gap-2 flex  items-center'>
             {selectedUser.fullName}
-            {onlineUsers.includes(selectedUser._id)}<span className='w-2 h-2 bg-green-500 rounded-full '></span>
+            {onlineUsers.includes(selectedUser._id) && <span className='w-2 h-2 bg-green-500 rounded-full '></span>}
             </p>
         <img onClick={()=>setSelectedUser(null)} src={assets.arrow_icon} className='md:hidden max-w-7' alt="" />
        <img src={assets.help_icon} className='max-w-5 max-md:hidden' alt="" />
