@@ -55,8 +55,17 @@ app.use(cors({
   credentials: true
 }));
 
-// Handle preflight requests
-app.options("*", cors());
+// Handle all OPTIONS requests safely
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, token");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Credentials", "true");
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 // Routes
 app.use("/api/status", (req, res) => res.send("server is live"));
