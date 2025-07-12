@@ -39,7 +39,16 @@ io.on("connection",(socket)=>{
 
 //middleware
 app.use(express.json({limit:"4mb"}))
-app.use(cors())
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://chatzz-eta.vercel.app"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 
 //Routes setup
 app.use("/api/status",(req,res)=>
